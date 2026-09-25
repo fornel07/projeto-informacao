@@ -502,7 +502,7 @@ const Book3DBackground: React.FC = () => {
   return (
     <div
       ref={mountRef}
-      className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-25 sm:opacity-40 md:opacity-100 transition-opacity duration-500"
+      className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-25 sm:opacity-35 md:opacity-45 transition-opacity duration-500"
       aria-hidden="true"
     />
   );
