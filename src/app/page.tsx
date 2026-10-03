@@ -275,9 +275,10 @@ const Book3DBackground: React.FC = () => {
     let modelMaxDim = 1;
 
     const getResponsiveBaseScale = (w: number) => {
-      if (w < 640) return 1.8;
-      if (w < 1024) return 2.2;
-      return 2.8;
+      if (w < 480) return 1.4;
+      if (w < 640) return 1.6;
+      if (w < 1024) return 2.0;
+      return 2.6;
     };
 
     const loader = new GLTFLoader();
@@ -450,7 +451,7 @@ const Book3DBackground: React.FC = () => {
   return (
     <div
       ref={mountRef}
-      className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-25 sm:opacity-35 md:opacity-40 transition-opacity duration-500"
+      className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-20 sm:opacity-30 md:opacity-40 transition-opacity duration-500"
       aria-hidden="true"
     />
   );
@@ -488,12 +489,12 @@ const VolunteerModal: React.FC<VolunteerModalProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-sm overflow-y-auto">
       <motion.div
         initial={{ opacity: 0, scale: 0.96 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.96 }}
-        className="relative w-full max-w-md bg-white border border-[#c2c2c2] rounded-2xl p-6 sm:p-7 shadow-2xl text-black font-inter font-normal"
+        className="relative w-full max-w-md bg-white border border-[#c2c2c2] rounded-2xl p-5 sm:p-7 shadow-2xl text-black font-inter font-normal my-auto max-h-[92vh] overflow-y-auto"
       >
         <button
           onClick={onClose}
@@ -720,13 +721,13 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenVolunteer }) => {
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/95 backdrop-blur-md py-3 border-b border-[#c2c2c2]/60 shadow-xs"
-          : "bg-transparent py-4 sm:py-5"
+          ? "bg-white/95 backdrop-blur-md py-2.5 sm:py-3 border-b border-[#c2c2c2]/60 shadow-xs"
+          : "bg-transparent py-3 sm:py-5"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 flex items-center justify-between">
-        <a href="#" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white border border-[#c2c2c2] p-1.5 flex items-center justify-center shadow-xs group-hover:border-[#074BED] transition-all duration-300 shrink-0">
+      <div className="max-w-7xl mx-auto px-3.5 sm:px-8 flex items-center justify-between gap-2 sm:gap-4">
+        <a href="#" className="flex items-center gap-2.5 sm:gap-3 group min-w-0">
+          <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl bg-white border border-[#c2c2c2] p-1 sm:p-1.5 flex items-center justify-center shadow-xs group-hover:border-[#074BED] transition-all duration-300 shrink-0">
             <div className="relative w-full h-full">
               <Image
                 src="/logo_symbol.png"
@@ -741,7 +742,7 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenVolunteer }) => {
             <span className="font-urbanist font-normal text-sm sm:text-base text-black tracking-tight group-hover:text-[#074BED] transition-colors truncate">
               Projeto InformAção
             </span>
-            <span className="text-[10px] font-mono tracking-wider text-zinc-500 uppercase truncate">
+            <span className="text-[9px] sm:text-[10px] font-mono tracking-wider text-zinc-500 uppercase truncate">
               Amparo • SP — Desde 2014
             </span>
           </div>
@@ -768,10 +769,10 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenVolunteer }) => {
         <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           <button
             onClick={onOpenVolunteer}
-            className="inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-xs font-inter font-normal tracking-wide bg-[#074BED] hover:bg-[#0039CB] text-white transition-all shadow-sm hover:scale-[1.02] active:scale-95"
+            className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:px-5 sm:py-2.5 rounded-full text-xs font-inter font-normal tracking-wide bg-[#074BED] hover:bg-[#0039CB] text-white transition-all shadow-sm hover:scale-[1.02] active:scale-95 whitespace-nowrap"
           >
             <span>Seja Voluntário</span>
-            <ArrowRight className="w-3.5 h-3.5" />
+            <ArrowRight className="w-3.5 h-3.5 shrink-0" />
           </button>
         </div>
       </div>
@@ -789,36 +790,24 @@ interface HeroSectionProps {
 
 const HeroSection: React.FC<HeroSectionProps> = ({ onOpenVolunteer }) => {
   return (
-    <section className="relative min-h-[85vh] flex flex-col justify-center pt-28 sm:pt-36 pb-16 sm:pb-20 px-4 sm:px-8 overflow-hidden bg-white">
+    <section className="relative min-h-[75vh] sm:min-h-[85vh] flex flex-col justify-center pt-24 sm:pt-36 pb-12 sm:pb-20 px-4 sm:px-8 overflow-hidden bg-white">
       <HeroMeshBackground />
 
       <div className="relative z-10 max-w-7xl mx-auto w-full">
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono font-normal text-[#074BED] bg-[#EEF4FF] border border-[#C7D9FF] mb-6 shadow-xs flex-wrap"
-        >
-          <span className="w-2 h-2 rounded-full bg-[#074BED]" />
-          <span>Cursinho Comunitário e Popular em Amparo (SP)</span>
-          <span className="text-zinc-400">•</span>
-          <span>Gratuito</span>
-        </motion.div>
-
-        <div className="max-w-3xl mb-6">
-          <h1 className="font-urbanist font-normal text-3xl sm:text-5xl lg:text-6xl text-black tracking-tight leading-[1.15]">
+        <div className="max-w-3xl mb-4 sm:mb-6">
+          <h1 className="font-urbanist font-normal text-2xl xs:text-3xl sm:text-5xl lg:text-6xl text-black tracking-tight leading-[1.2] sm:leading-[1.15]">
             Educação solidária para abrir portas nas{" "}
             <span className="text-[#074BED]">universidades públicas.</span>
           </h1>
         </div>
 
-        <p className="max-w-2xl text-base sm:text-lg text-zinc-600 font-inter font-normal leading-relaxed mb-8 sm:mb-10">
+        <p className="max-w-2xl text-sm sm:text-lg text-zinc-600 font-inter font-normal leading-relaxed mb-8 sm:mb-10">
           Nossa missão é colaborar na formação pessoal e no desenvolvimento de projetos de vida
           para promover a transformação social. Cursinho voluntário e 100% gratuito voltado
           aos estudantes da rede pública de Amparo e região.
         </p>
 
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 mb-14 sm:mb-16 font-inter font-normal">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 mb-10 sm:mb-16 font-inter font-normal">
           <button
             onClick={onOpenVolunteer}
             className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full text-xs sm:text-sm font-normal tracking-wide bg-[#074BED] hover:bg-[#0039CB] text-white transition-all shadow-sm hover:scale-[1.02] text-center"
@@ -836,28 +825,28 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onOpenVolunteer }) => {
           </a>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 pt-6 sm:pt-8 border-t border-[#c2c2c2]/50 font-inter font-normal">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 pt-5 sm:pt-8 border-t border-[#c2c2c2]/50 font-inter font-normal">
           <div>
-            <div className="text-2xl sm:text-3xl font-urbanist font-normal text-black">2014</div>
-            <div className="text-xs font-mono text-zinc-500 uppercase tracking-wider mt-1">
+            <div className="text-xl sm:text-3xl font-urbanist font-normal text-black">2014</div>
+            <div className="text-[11px] sm:text-xs font-mono text-zinc-500 uppercase tracking-wider mt-1">
               Ano de Fundação
             </div>
           </div>
           <div>
-            <div className="text-2xl sm:text-3xl font-urbanist font-normal text-[#074BED]">100%</div>
-            <div className="text-xs font-mono text-zinc-500 uppercase tracking-wider mt-1">
+            <div className="text-xl sm:text-3xl font-urbanist font-normal text-[#074BED]">100%</div>
+            <div className="text-[11px] sm:text-xs font-mono text-zinc-500 uppercase tracking-wider mt-1">
               Gratuito & Voluntário
             </div>
           </div>
           <div>
-            <div className="text-2xl sm:text-3xl font-urbanist font-normal text-black">Amparo</div>
-            <div className="text-xs font-mono text-zinc-500 uppercase tracking-wider mt-1">
+            <div className="text-xl sm:text-3xl font-urbanist font-normal text-black">Amparo</div>
+            <div className="text-[11px] sm:text-xs font-mono text-zinc-500 uppercase tracking-wider mt-1">
               Praça Dr. Meirelles Reis, 153
             </div>
           </div>
           <div>
-            <div className="text-2xl sm:text-3xl font-urbanist font-normal text-[#074BED]">Apoio</div>
-            <div className="text-xs font-mono text-zinc-500 uppercase tracking-wider mt-1">
+            <div className="text-xl sm:text-3xl font-urbanist font-normal text-[#074BED]">Apoio</div>
+            <div className="text-[11px] sm:text-xs font-mono text-zinc-500 uppercase tracking-wider mt-1">
               ENEM & Vestibulares
             </div>
           </div>
@@ -873,14 +862,14 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onOpenVolunteer }) => {
 
 const HistorySection: React.FC = () => {
   return (
-    <section id="historia" className="relative py-20 sm:py-24 px-4 sm:px-8 bg-zinc-50 border-t border-[#c2c2c2]/50 font-inter font-normal">
+    <section id="historia" className="relative py-14 sm:py-24 px-4 sm:px-8 bg-zinc-50 border-t border-[#c2c2c2]/50 font-inter font-normal">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12 pb-6 border-b border-[#c2c2c2]/60">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4 mb-8 sm:mb-12 pb-5 sm:pb-6 border-b border-[#c2c2c2]/60">
           <div>
             <span className="text-xs font-mono uppercase tracking-widest text-[#074BED] block mb-1">
               Nossa Origem
             </span>
-            <h2 className="font-urbanist font-normal text-2xl sm:text-4xl text-black tracking-tight">
+            <h2 className="font-urbanist font-normal text-2xl sm:text-3xl md:text-4xl text-black tracking-tight">
               A História do Projeto InformAção
             </h2>
           </div>
@@ -973,14 +962,14 @@ const HistorySection: React.FC = () => {
 
 const ValuesSection: React.FC = () => {
   return (
-    <section id="valores" className="relative py-20 sm:py-24 px-4 sm:px-8 bg-white border-t border-[#c2c2c2]/50 font-inter font-normal">
+    <section id="valores" className="relative py-14 sm:py-24 px-4 sm:px-8 bg-white border-t border-[#c2c2c2]/50 font-inter font-normal">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12 pb-6 border-b border-[#c2c2c2]/60">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4 mb-8 sm:mb-12 pb-5 sm:pb-6 border-b border-[#c2c2c2]/60">
           <div>
             <span className="text-xs font-mono uppercase tracking-widest text-[#074BED] block mb-1">
               Princípios
             </span>
-            <h2 className="font-urbanist font-normal text-2xl sm:text-4xl text-black tracking-tight">
+            <h2 className="font-urbanist font-normal text-2xl sm:text-3xl md:text-4xl text-black tracking-tight">
               Nossos Valores
             </h2>
           </div>
@@ -1030,14 +1019,14 @@ const ValuesSection: React.FC = () => {
 
 const FoundersSection: React.FC = () => {
   return (
-    <section id="fundadores" className="relative py-20 sm:py-24 px-4 sm:px-8 bg-zinc-50 border-t border-[#c2c2c2]/50 font-inter font-normal">
+    <section id="fundadores" className="relative py-14 sm:py-24 px-4 sm:px-8 bg-zinc-50 border-t border-[#c2c2c2]/50 font-inter font-normal">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12 pb-6 border-b border-[#c2c2c2]/60">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4 mb-8 sm:mb-12 pb-5 sm:pb-6 border-b border-[#c2c2c2]/60">
           <div>
             <span className="text-xs font-mono uppercase tracking-widest text-[#074BED] block mb-1">
               Equipe Fundadora
             </span>
-            <h2 className="font-urbanist font-normal text-2xl sm:text-4xl text-black tracking-tight">
+            <h2 className="font-urbanist font-normal text-2xl sm:text-3xl md:text-4xl text-black tracking-tight">
               Os Fundadores de 2014
             </h2>
           </div>
@@ -1046,11 +1035,11 @@ const FoundersSection: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {FOUNDERS_DATA.map((founder) => (
             <div
               key={founder.name}
-              className="rounded-2xl bg-white border border-[#c2c2c2] p-5 shadow-xs flex flex-col justify-between hover:border-[#074BED] transition-all"
+              className="rounded-2xl bg-white border border-[#c2c2c2] p-4 sm:p-5 shadow-xs flex flex-col justify-between hover:border-[#074BED] transition-all"
             >
               <div>
                 <div className="relative aspect-[4/5] w-full rounded-xl overflow-hidden mb-4 bg-zinc-100 border border-zinc-200">
@@ -1115,14 +1104,14 @@ const FoundersSection: React.FC = () => {
 
 const MethodologySection: React.FC = () => {
   return (
-    <section id="metodologia" className="relative py-20 sm:py-24 px-4 sm:px-8 bg-white border-t border-[#c2c2c2]/50 font-inter font-normal">
+    <section id="metodologia" className="relative py-14 sm:py-24 px-4 sm:px-8 bg-white border-t border-[#c2c2c2]/50 font-inter font-normal">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12 pb-6 border-b border-[#c2c2c2]/60">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4 mb-8 sm:mb-12 pb-5 sm:pb-6 border-b border-[#c2c2c2]/60">
           <div>
             <span className="text-xs font-mono uppercase tracking-widest text-[#074BED] block mb-1">
               Como Funciona
             </span>
-            <h2 className="font-urbanist font-normal text-2xl sm:text-4xl text-black tracking-tight">
+            <h2 className="font-urbanist font-normal text-2xl sm:text-3xl md:text-4xl text-black tracking-tight">
               Atividades Aos Sábados
             </h2>
           </div>
@@ -1183,14 +1172,14 @@ interface ContactSectionProps {
 
 const ContactSection: React.FC<ContactSectionProps> = ({ onOpenVolunteer }) => {
   return (
-    <section id="contato" className="relative py-20 sm:py-24 px-4 sm:px-8 bg-zinc-50 border-t border-[#c2c2c2]/50 font-inter font-normal">
+    <section id="contato" className="relative py-14 sm:py-24 px-4 sm:px-8 bg-zinc-50 border-t border-[#c2c2c2]/50 font-inter font-normal">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12 pb-6 border-b border-[#c2c2c2]/60">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4 mb-8 sm:mb-12 pb-5 sm:pb-6 border-b border-[#c2c2c2]/60">
           <div>
             <span className="text-xs font-mono uppercase tracking-widest text-[#074BED] block mb-1">
               Fale Conosco
             </span>
-            <h2 className="font-urbanist font-normal text-2xl sm:text-4xl text-black tracking-tight">
+            <h2 className="font-urbanist font-normal text-2xl sm:text-3xl md:text-4xl text-black tracking-tight">
               Canais Oficiais de Contato
             </h2>
           </div>
@@ -1199,15 +1188,15 @@ const ContactSection: React.FC<ContactSectionProps> = ({ onOpenVolunteer }) => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-10 sm:mb-14">
           <a
             href="https://wa.me/5519998169352"
             target="_blank"
             rel="noopener noreferrer"
-            className="group rounded-2xl bg-white border border-[#c2c2c2] hover:border-[#074BED] p-5 shadow-xs transition-all flex flex-col justify-between"
+            className="group rounded-2xl bg-white border border-[#c2c2c2] hover:border-[#074BED] p-4 sm:p-5 shadow-xs transition-all flex flex-col justify-between"
           >
             <div>
-              <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-4">
+              <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-3 sm:mb-4">
                 <Phone className="w-5 h-5" />
               </div>
               <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-400 block mb-1">
@@ -1230,10 +1219,10 @@ const ContactSection: React.FC<ContactSectionProps> = ({ onOpenVolunteer }) => {
             href="https://www.instagram.com/pinformacao"
             target="_blank"
             rel="noopener noreferrer"
-            className="group rounded-2xl bg-white border border-[#c2c2c2] hover:border-[#074BED] p-5 shadow-xs transition-all flex flex-col justify-between"
+            className="group rounded-2xl bg-white border border-[#c2c2c2] hover:border-[#074BED] p-4 sm:p-5 shadow-xs transition-all flex flex-col justify-between"
           >
             <div>
-              <div className="w-10 h-10 rounded-xl bg-pink-50 text-pink-600 flex items-center justify-center mb-4">
+              <div className="w-10 h-10 rounded-xl bg-pink-50 text-pink-600 flex items-center justify-center mb-3 sm:mb-4">
                 <Instagram className="w-5 h-5" />
               </div>
               <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-400 block mb-1">
@@ -1256,10 +1245,10 @@ const ContactSection: React.FC<ContactSectionProps> = ({ onOpenVolunteer }) => {
             href="https://www.facebook.com/PInformAcao"
             target="_blank"
             rel="noopener noreferrer"
-            className="group rounded-2xl bg-white border border-[#c2c2c2] hover:border-[#074BED] p-5 shadow-xs transition-all flex flex-col justify-between"
+            className="group rounded-2xl bg-white border border-[#c2c2c2] hover:border-[#074BED] p-4 sm:p-5 shadow-xs transition-all flex flex-col justify-between"
           >
             <div>
-              <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#074BED] flex items-center justify-center mb-4">
+              <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#074BED] flex items-center justify-center mb-3 sm:mb-4">
                 <Facebook className="w-5 h-5" />
               </div>
               <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-400 block mb-1">
@@ -1280,10 +1269,10 @@ const ContactSection: React.FC<ContactSectionProps> = ({ onOpenVolunteer }) => {
 
           <a
             href="mailto:projeto.inform@gmail.com"
-            className="group rounded-2xl bg-white border border-[#c2c2c2] hover:border-[#074BED] p-5 shadow-xs transition-all flex flex-col justify-between"
+            className="group rounded-2xl bg-white border border-[#c2c2c2] hover:border-[#074BED] p-4 sm:p-5 shadow-xs transition-all flex flex-col justify-between"
           >
             <div>
-              <div className="w-10 h-10 rounded-xl bg-zinc-100 text-zinc-700 flex items-center justify-center mb-4">
+              <div className="w-10 h-10 rounded-xl bg-zinc-100 text-zinc-700 flex items-center justify-center mb-3 sm:mb-4">
                 <Mail className="w-5 h-5" />
               </div>
               <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-400 block mb-1">
@@ -1303,8 +1292,8 @@ const ContactSection: React.FC<ContactSectionProps> = ({ onOpenVolunteer }) => {
           </a>
         </div>
 
-        <div className="rounded-2xl bg-white border border-[#c2c2c2] p-8 sm:p-12 text-center max-w-3xl mx-auto shadow-xs font-inter font-normal">
-          <h2 className="font-urbanist font-normal text-2xl sm:text-3xl text-black tracking-tight mb-3">
+        <div className="rounded-2xl bg-white border border-[#c2c2c2] p-6 sm:p-12 text-center max-w-3xl mx-auto shadow-xs font-inter font-normal">
+          <h2 className="font-urbanist font-normal text-xl sm:text-2xl md:text-3xl text-black tracking-tight mb-2 sm:mb-3">
             “Estamos juntos. Juntos, sempre.”
           </h2>
           <p className="max-w-lg mx-auto text-xs sm:text-sm text-zinc-600 leading-relaxed mb-6 font-normal">
