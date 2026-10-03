@@ -852,7 +852,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onOpenVolunteer }) => {
           <div>
             <div className="text-2xl sm:text-3xl font-urbanist font-normal text-black">Amparo</div>
             <div className="text-xs font-mono text-zinc-500 uppercase tracking-wider mt-1">
-              Praça Pádua Salles
+              Praça Dr. Meirelles Reis, 153
             </div>
           </div>
           <div>
@@ -868,7 +868,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onOpenVolunteer }) => {
 };
 
 // ============================================================================
-// SEÇÃO 1: Nossa História & Praça Pádua Salles
+// SEÇÃO 1: Nossa História & Praça Dr. Meirelles Reis
 // ============================================================================
 
 const HistorySection: React.FC = () => {
@@ -914,13 +914,13 @@ const HistorySection: React.FC = () => {
             <div className="bg-white p-5 sm:p-6 rounded-xl border border-[#c2c2c2]/80 shadow-xs space-y-2">
               <div className="flex items-center gap-2 text-xs font-mono text-[#074BED] font-normal">
                 <MapPin className="w-4 h-4 text-[#074BED]" />
-                <span>O Início na Praça Pádua Salles (2014)</span>
+                <span>O Início em Amparo (2014)</span>
               </div>
               <h3 className="font-urbanist font-normal text-base sm:text-lg text-black">
-                Ocupação do Espaço Público
+                Espaço Comunitário no Centro
               </h3>
               <p className="text-xs sm:text-sm text-zinc-600 leading-relaxed font-normal">
-                Em 2014, um grupo de jovens formados em universidades públicas decidiu unir forças para criar um cursinho comunitário gratuito para os estudantes das escolas públicas de Amparo. O ponto de encontro inicial foi a histórica Praça Pádua Salles.
+                Em 2014, um grupo de jovens formados em universidades públicas decidiu unir forças para criar um cursinho comunitário gratuito para os estudantes das escolas públicas de Amparo, com atividades na Praça Dr. Meirelles Reis, 153, no Centro da cidade.
               </p>
             </div>
 
@@ -1355,7 +1355,7 @@ const Footer: React.FC = () => {
               Projeto InformAção
             </span>
             <span className="text-zinc-500 text-[11px]">
-              Praça Pádua Salles — Centro, Amparo (SP)
+              Praça Dr. Meirelles Reis, 153 — Centro, Amparo - SP
             </span>
           </div>
         </div>
