@@ -11,11 +11,13 @@ const config: Config = {
     extend: {
       colors: {
         pin: {
-          amber: "#FFB30F",
-          gold: "#FFA300",
-          brown: "#7C4800",
-          dark: "#1C1F26",
-          sand: "#FAF7F2",
+          blue: "#074BED",
+          "blue-hover": "#0039CB",
+          "blue-light": "#EEF4FF",
+          gray: "#C2C2C2",
+          "gray-border": "#E4E4E7",
+          "gray-light": "#F4F4F5",
+          dark: "#000000",
         },
       },
     },
