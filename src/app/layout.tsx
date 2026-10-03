@@ -1,5 +1,20 @@
 import type { Metadata } from "next";
+import { Urbanist, Inter } from "next/font/google";
 import "./globals.css";
+
+const urbanist = Urbanist({
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  variable: "--font-urbanist",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Projeto InformAção — Cursinho Popular Gratuito em Amparo (SP)",
@@ -29,7 +44,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className="antialiased selection:bg-[#074BED] selection:text-white bg-white text-black">
+      <body
+        className={`${inter.variable} ${urbanist.variable} font-sans font-normal antialiased selection:bg-[#074BED] selection:text-white bg-white text-black`}
+      >
         {children}
       </body>
     </html>

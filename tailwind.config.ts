@@ -9,6 +9,12 @@ const config: Config = {
   darkMode: "class",
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["var(--font-inter)", "sans-serif"],
+        inter: ["var(--font-inter)", "sans-serif"],
+        urbanist: ["var(--font-urbanist)", "sans-serif"],
+        header: ["var(--font-urbanist)", "sans-serif"],
+      },
       colors: {
         pin: {
           blue: "#074BED",
